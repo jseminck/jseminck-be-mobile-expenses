@@ -1,0 +1,11 @@
+{
+    "navigation": "tabs|swiper",
+    "testUser": {
+        "username": "myGithubUser",
+        "password": "myGithubPassword"
+    },
+    "AWS": {
+        "accessKeyId": "myAccessKey",
+        "secretAccessKey": "mySecretKey"
+    }
+}
