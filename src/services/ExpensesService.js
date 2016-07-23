@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const BASE_URL = "http://calm-reef-93989.herokuapp.com/api/expenses";
 
 class ExpensesService {
@@ -5,9 +7,9 @@ class ExpensesService {
         return new Promise(async (resolve, reject) => {
             try {
                 const response = await fetch(`${BASE_URL}?year=2016&month=5&token=${token}`);
-                console.log("response", response);
                 const json = await response.json();
-                resolve(json);
+
+                resolve(_.orderBy(json, 'purchase_date', 'desc'));
             } catch (err) {
                 reject(err);
             }

@@ -49,8 +49,6 @@ class List extends React.Component {
             );
         }
 
-        console.log("this.props.state.expenenses", this.props.state.expenses);
-
         return (
             <View>
                 <ListView
@@ -68,16 +66,15 @@ class List extends React.Component {
         return (
             <ListHeader
                 loading={this.props.state.loading}
-                countdown={this.props.state.countdown}
             />
         );
     }
 
-    renderRow(instance) {
+    renderRow(item, x, index) {
         return (
             <ListRow
-                instance={instance}
-                onToggleServer={this.props.onToggleServer}
+                index={index}
+                item={item}
             />
         );
     }

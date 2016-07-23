@@ -7,7 +7,7 @@ export default function github(state = initialState, action = {}) {
     case 'expenses.toggle.loading':
         return onToggleLoading(state);
     case 'expenses.load.success':
-        return onLoadSuccess(state, action.expenses)
+        return onLoadSuccess(state, action.expenses);
     default:
         return state;
     }
