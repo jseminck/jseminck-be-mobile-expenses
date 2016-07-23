@@ -3,7 +3,11 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './createActions';
+
 import MonthPicker from './MonthPicker';
+import CategoryPicker from './CategoryPicker';
+import PricePicker from './PricePicker';
+import Completed from './Completed';
 
 class CreateContainer extends React.Component {
     static propTypes = {
@@ -12,16 +16,36 @@ class CreateContainer extends React.Component {
         // MonthPicker
         onPreviousMonth: PropTypes.func.isRequired,
         onNextMonth: PropTypes.func.isRequired,
-        onSelectDay: PropTypes.func.isRequired
+        onSelectDay: PropTypes.func.isRequired,
 
+        // Completed
+        onNextScreen: PropTypes.func.isRequired,
+        onCancel: PropTypes.func.isRequired
     };
 
     render() {
         return (
             <View style={styles.container}>
-                <MonthPicker {...this.props} />
+                {this.getScreen()}
             </View>
         );
+    }
+
+    getScreen() {
+        const {currentScreen} = this.props.state;
+
+        if (currentScreen === 'MONTH') {
+            return <MonthPicker {...this.props} />;
+        }
+        else if (currentScreen === 'CATEGORY') {
+            return <CategoryPicker {...this.props} />;
+        }
+        else if (currentScreen === 'PRICE') {
+            return <PricePicker {...this.props} />;
+        }
+        else {
+            return <Completed {...this.props} />;
+        }
     }
 }
 

@@ -12,7 +12,11 @@ export default class MonthPicker extends React.Component {
 
         onPreviousMonth: PropTypes.func.isRequired,
         onNextMonth: PropTypes.func.isRequired,
-        onSelectDay: PropTypes.func.isRequired
+        onSelectDay: PropTypes.func.isRequired,
+
+        // Completed
+        onNextScreen: PropTypes.func.isRequired,
+        onCancel: PropTypes.func.isRequired
     };
 
     render() {
@@ -31,7 +35,10 @@ export default class MonthPicker extends React.Component {
                     selectedDay={this.props.state.day}
                     onSelectDay={this.props.onSelectDay}
                 />
-                <CreateSubmit />
+                <CreateSubmit 
+                    onNextScreen={this.props.onNextScreen}
+                    onCancel={this.props.onCancel}
+                />
             </View>
         );
     }

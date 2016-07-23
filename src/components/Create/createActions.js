@@ -1,3 +1,11 @@
+export function onNextScreen() {
+    return {type: 'create.next.screen'};
+}
+
+export function onCancel() {
+    return {type: 'create.cancel'};
+}
+
 export function onNextMonth() {
     return {type: 'create.next.month'};
 }
