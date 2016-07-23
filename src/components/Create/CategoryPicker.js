@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import CreateHeader from './CreateHeader';
 import CreateSubmit from './CreateSubmit';
@@ -17,7 +17,11 @@ export default class CategoryPicker extends React.Component {
         return (
             <View>
                 <CreateHeader title="Category" />
-
+                <View style={styles.container}>
+                    <Text>
+                        Hello World
+                    </Text>
+                </View>
                 <CreateSubmit
                     onNextScreen={this.props.onNextScreen}
                     onCancel={this.props.onCancel}
@@ -26,3 +30,9 @@ export default class CategoryPicker extends React.Component {
         );
     }
 }
+
+const styles = {
+    container: {
+        height: 340
+    }
+};

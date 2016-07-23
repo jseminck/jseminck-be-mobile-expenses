@@ -23,19 +23,21 @@ export default class MonthPicker extends React.Component {
         return (
             <View>
                 <CreateHeader title="Month" />
-                <MonthPickerHeader
-                    year={this.props.state.year}
-                    month={this.props.state.month}
-                    onPreviousMonth={this.props.onPreviousMonth}
-                    onNextMonth={this.props.onNextMonth}
-                />
-                <MonthPickerDays
-                    year={this.props.state.year}
-                    month={this.props.state.month}
-                    selectedDay={this.props.state.day}
-                    onSelectDay={this.props.onSelectDay}
-                />
-                <CreateSubmit 
+                <View style={styles.container}>
+                    <MonthPickerHeader
+                        year={this.props.state.year}
+                        month={this.props.state.month}
+                        onPreviousMonth={this.props.onPreviousMonth}
+                        onNextMonth={this.props.onNextMonth}
+                    />
+                    <MonthPickerDays
+                        year={this.props.state.year}
+                        month={this.props.state.month}
+                        selectedDay={this.props.state.day}
+                        onSelectDay={this.props.onSelectDay}
+                    />
+                </View>
+                <CreateSubmit
                     onNextScreen={this.props.onNextScreen}
                     onCancel={this.props.onCancel}
                 />
@@ -43,3 +45,9 @@ export default class MonthPicker extends React.Component {
         );
     }
 }
+
+const styles = {
+    container: {
+        height: 340
+    }
+};
