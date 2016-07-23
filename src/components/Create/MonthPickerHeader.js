@@ -46,12 +46,12 @@ const styles = {
         padding: 20
     },
     monthValue: {
-        color: '#ECE5FB',
+        color: 'black',
         fontSize: 20,
         width: 50
     },
     monthName: {
-        color: '#ECE5FB',
+        color: 'black',
         marginLeft: 15,
         fontSize: 20,
         width: 120

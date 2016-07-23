@@ -35,16 +35,20 @@ const styles = {
         flexDirection: 'row'
     },
     cancelButton: {
-        borderColor: 'red',
+        borderColor: '#FFB59A',
+        backgroundColor: '#FFB59A',
+        borderRadius: 8,
         borderWidth: 1,
         padding: 10
     },
     cancelButtonText: {
-        color: 'red',
+        color: 'white',
         fontSize: 24
     },
     submitButton: {
-        borderColor: 'green',
+        borderColor: '#82D8B1',
+        backgroundColor: '#82D8B1',
+        borderRadius: 10,
         borderWidth: 1,
         marginLeft: 10,
         paddingLeft: 50,
@@ -53,7 +57,7 @@ const styles = {
         paddingBottom: 10
     },
     submitButtonText: {
-        color: 'green',
+        color: 'white',
         fontSize: 24
     }
 };

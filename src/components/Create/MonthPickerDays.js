@@ -18,9 +18,10 @@ export default ({year, month, selectedDay}) => {
                 <MonthPickerDay day="Sat" />
                 <MonthPickerDay day="Sun" />
             </View>
-            {days.map(week => {
+            {days.map((week, index) => {
                 return (
                     <MonthPickerWeek
+                        key={index}
                         week={week}
                         selectedDay={selectedDay}
                     />
