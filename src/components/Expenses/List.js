@@ -5,22 +5,15 @@ import * as actions from './expensesActions';
 import { View, Text, ListView } from 'react-native';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
-import ListLoading from "./ListLoading";
+import ListLoading from './ListLoading';
 
 class List extends React.Component {
     static propTypes = {
         login: React.PropTypes.object.isRequired,
         state: React.PropTypes.object.isRequired,
 
-        onDataLoad: React.PropTypes.func.isRequired,
+        onLoad: React.PropTypes.func.isRequired,
         onToggleServer: React.PropTypes.func.isRequired
-    }
-
-    componentDidMount() {
-        if (this.props.login.loggedIn) {
-            this.props.onDataLoad(this.props.login.loggedIn);
-            // this.timer = setInterval(this.props.onTick, 1000);
-        }
     }
 
     constructor(props) {
@@ -31,35 +24,44 @@ class List extends React.Component {
         });
 
         this.state = {
-            dataSource: dataSource.cloneWithRows([])
+            dataSource: dataSource.cloneWithRows(this.props.state)
         };
     }
 
-    // componentWillReceiveProps(nextProps) {
-        // if (nextProps.feed !== this.props.feed) {
-        //     this.setState({
-        //         dataSource: this.state.dataSource.cloneWithRows(nextProps.feed)
-        //     });
-        // }
-    // }
+    componentDidMount() {
+        if (this.props.login.loggedIn) {
+            this.props.onLoad(this.props.login.token);
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.state.expenses !== this.props.state.expenses) {
+            this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(nextProps.state.expenses)
+            });
+        }
+    }
 
     render() {
         if (this.props.state.loading) {
             return (
                 <ListLoading />
-            )
+            );
         }
-        // return (
-        //     <View>
-        //         <ListView
-        //             dataSource={this.state.dataSource}
-        //             renderHeader={::this.renderHeader}
-        //             renderRow={::this.renderRow}
-        //             enableEmptySections={true}
-        //         >
-        //         </ListView>
-        //     </View>
-        // );
+
+        console.log("this.props.state.expenenses", this.props.state.expenses);
+
+        return (
+            <View>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderHeader={::this.renderHeader}
+                    renderRow={::this.renderRow}
+                    enableEmptySections={true}
+                >
+                </ListView>
+            </View>
+        );
     }
 
     renderHeader() {
@@ -82,7 +84,6 @@ class List extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("state", state);
     return {
         login: state.login,
         state: state.expenses

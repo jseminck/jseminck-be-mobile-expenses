@@ -1,52 +1,13 @@
+const BASE_URL = "http://calm-reef-93989.herokuapp.com/api/expenses";
+
 class ExpensesService {
-    getServers(token) {
+    getExpenses(token) {
         return new Promise(async (resolve, reject) => {
             try {
-                const awsResponse = await fetch(`http://powerful-meadow-99607.herokuapp.com/api/aws?token=${token}`);
-                const awsJson = await awsResponse.json();
-                resolve(awsJson);
-            } catch (err) {
-                reject(err);
-            }
-        });
-    }
-
-    start(id, token) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const awsResponse = await fetch(`http://powerful-meadow-99607.herokuapp.com/api/aws/start?token=${token}`, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id
-                    })
-                });
-                const awsJson = await awsResponse.json();
-                resolve(awsJson);
-            } catch (err) {
-                reject(err);
-            }
-        });
-    }
-
-    stop(id, token) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const awsResponse = await fetch(`http://powerful-meadow-99607.herokuapp.com/api/aws/stop?token=${token}`, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id
-                    })
-                });
-                const awsJson = await awsResponse.json();
-                resolve(awsJson);
+                const response = await fetch(`${BASE_URL}?year=2016&month=5&token=${token}`);
+                console.log("response", response);
+                const json = await response.json();
+                resolve(json);
             } catch (err) {
                 reject(err);
             }

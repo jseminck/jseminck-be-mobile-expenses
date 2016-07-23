@@ -1,22 +1,13 @@
 import React from 'react';
-import { View, Text, ActivityIndicatorIOS } from 'react-native';
+import { View, Text } from 'react-native';
 
 export default class ListHeader extends React.Component {
-    static propTypes = {
-        countdown: React.PropTypes.number.isRequired,
-        loading: React.PropTypes.bool.isRequired
-    }
-
     render() {
         return (
             <View style={styles.container}>
                 <Text>
-                    Next update in {this.props.countdown} seconds.
+                    My Header
                 </Text>
-                <ActivityIndicatorIOS
-                    animating={this.props.loading}
-                    style={styles.indicator}
-                />
             </View>
         );
     }
@@ -29,8 +20,5 @@ const styles = {
         marginTop: 5,
         marginLeft: 5,
         marginBottom: 10
-    },
-    indicator: {
-        marginLeft: 5
     }
 };

@@ -6,7 +6,7 @@ export function onStartupLogin() {
             const token = await AuthService.getToken();
             return dispatch(onLoginSuccess(token));
         } catch (err) {
-            return dispatch(onLoginFailed(err));
+            // return dispatch(onLoginFailed(err));
         }
     };
 }
@@ -33,7 +33,7 @@ export function onLoginClick(user) {
             const token = await AuthService.login(user.username, user.password);
             return dispatch(onLoginSuccess(token));
         } catch (err) {
-            return dispatch(onLoginFailed(err));
+            // return dispatch(onLoginFailed(err));
         }
     };
 }

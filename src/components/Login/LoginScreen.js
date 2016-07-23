@@ -31,7 +31,7 @@ class LoginScreen extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.state.loggedIn !== this.props.state.loggedIn && nextProps.state.loggedIn) {
-            let route = routes.getAwsRoute();
+            let route = routes.getHomeScreen();
             this.props.navigator.replace(route);
         }
     }
