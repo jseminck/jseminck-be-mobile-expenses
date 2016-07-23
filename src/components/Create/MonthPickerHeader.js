@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React from 'React';
 import {View, TouchableHighlight, Text, Image} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default ({onPreviousMonth, onNextMonth, year, month}) => {
     return (
@@ -10,10 +11,7 @@ export default ({onPreviousMonth, onNextMonth, year, month}) => {
                     underlayColor='#A38BD7'
                     onPress={onPreviousMonth}
                 >
-                    <Image
-                        source={require('./navigate.png')}
-                        style={styles.previousButton}
-                    />
+                    <Icon name="arrow-circle-left" size={30} style={styles.previousButton} />
                 </TouchableHighlight>
                 <Text style={styles.monthValue}>
                     {year}
@@ -25,10 +23,7 @@ export default ({onPreviousMonth, onNextMonth, year, month}) => {
                     underlayColor='#A38BD7'
                     onPress={onNextMonth}
                 >
-                    <Image
-                        source={require('./navigate.png')}
-                        style={styles.nextButton}
-                    />
+                    <Icon name="arrow-circle-right" size={30} style={styles.nextButton} />
                 </TouchableHighlight>
             </View>
         </View>
@@ -61,6 +56,5 @@ const styles = {
     },
     previousButton: {
         marginRight: 20,
-        transform: [{rotate: '180deg'}]
     }
 };
