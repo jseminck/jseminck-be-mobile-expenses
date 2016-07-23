@@ -1,4 +1,4 @@
 export login from './../../components/Login/loginReducer';
-export aws from './../../components/Aws/awsReducer';
+export expenses from './../../components/Expenses/expensesReducer';
 export tabs from './../../components/tabsReducer';
 export create from './../../components/Create/createReducer';

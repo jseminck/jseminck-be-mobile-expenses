@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 
-export default class ServerListRow extends React.Component {
+export default class ListRow extends React.Component {
     static propTypes = {
         instance: React.PropTypes.object.isRequired,
         onToggleServer: React.PropTypes.func.isRequired

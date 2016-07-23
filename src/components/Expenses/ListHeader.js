@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ActivityIndicatorIOS } from 'react-native';
 
-export default class ServerListRow extends React.Component {
+export default class ListHeader extends React.Component {
     static propTypes = {
         countdown: React.PropTypes.number.isRequired,
         loading: React.PropTypes.bool.isRequired

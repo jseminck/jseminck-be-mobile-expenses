@@ -1,4 +1,4 @@
-class AwsService {
+class ExpensesService {
     getServers(token) {
         return new Promise(async (resolve, reject) => {
             try {
@@ -46,7 +46,6 @@ class AwsService {
                     })
                 });
                 const awsJson = await awsResponse.json();
-                console.log("STOP awsResponse", awsResponse);
                 resolve(awsJson);
             } catch (err) {
                 reject(err);
@@ -55,4 +54,4 @@ class AwsService {
     }
 }
 
-export default new AwsService();
+export default new ExpensesService();

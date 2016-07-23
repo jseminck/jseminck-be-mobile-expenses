@@ -1,9 +1,9 @@
-import AwsService from './../../services/AwsService';
+import ExpensesService from './../../services/ExpensesService';
 
 export function onDataLoad(token) {
     return async (dispatch) => {
         dispatch(onToggleLoading());
-        const servers = await AwsService.getServers(token);
+        const servers = await ExpensesService.getServers(token);
         dispatch(onDataLoadSuccess(servers));
         dispatch(onToggleLoading());
     };
@@ -14,7 +14,7 @@ export function onToggleServer(id, api) {
         const token = getState().login.token;
 
         dispatch(onToggleLoading());
-        await AwsService[api](id, token); // calls .start or .stop
+        await ExpensesService[api](id, token); // calls .start or .stop
         dispatch(onToggleLoading());
     };
 }
@@ -37,7 +37,7 @@ export function onTick() {
     return async (dispatch, getState) => {
         if (getState().aws.countdown === 1) {
             dispatch(onToggleLoading());
-            const servers = await AwsService.getServers(getState().login.token);
+            const servers = await ExpensesService.getServers(getState().login.token);
             dispatch(onDataLoadSuccess(servers));
             dispatch(onToggleLoading());
 

@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const initialState = {
     selectedTab: 'feed',
-    loading: false,
+    loading: true,
     repos: [],
     feed: [],
     page: 0,

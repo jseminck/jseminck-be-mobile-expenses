@@ -2,12 +2,12 @@ import React from 'react';
 import { View, TabBarIOS } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as githubActions from './Aws/awsActions';
+import * as githubActions from './Expenses/expensesActions';
 import {onChangeTab} from './tabsActions';
 import {onLogout} from './Login/loginActions';
 import routes from './../scripts/routes';
 
-import ServerList from './Aws/ServerList';
+import ServerList from './Expenses/List';
 import CreateContainer from './Create/CreateContainer';
 
 class TabsScreen extends React.Component {
@@ -102,7 +102,7 @@ class TabsScreen extends React.Component {
     }
 
     onChangeTab(tab) {
-        this.props.onChangeTab(tab)
+        this.props.onChangeTab(tab);
     }
 }
 
