@@ -9,8 +9,11 @@ class CreateContainer extends React.Component {
     static propTypes = {
         state: PropTypes.object.isRequired,
 
+        // MonthPicker
         onPreviousMonth: PropTypes.func.isRequired,
-        onNextMonth: PropTypes.func.isRequired
+        onNextMonth: PropTypes.func.isRequired,
+        onSelectDay: PropTypes.func.isRequired
+
     };
 
     render() {

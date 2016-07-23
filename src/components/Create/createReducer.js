@@ -1,4 +1,3 @@
-
 const initialState = {
     year: 2016,
     month: 8,
@@ -11,6 +10,8 @@ export default function createReducer(state = initialState, action) {
         return onNextMonth(state);
     case 'create.previous.month':
         return onPreviousMonth(state);
+    case 'create.select.day':
+        return onSelectDay(state, action.day);
     default:
         return state;
     }
@@ -29,5 +30,12 @@ function onPreviousMonth(state) {
         ...state,
         year: state.month === 1 ? state.year - 1 : state.year,
         month: state.month === 1 ? 12 : state.month - 1
+    };
+}
+
+function onSelectDay(state, day) {
+    return {
+        ...state,
+        day
     };
 }

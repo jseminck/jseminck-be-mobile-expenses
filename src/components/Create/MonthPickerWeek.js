@@ -1,14 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 
-export default ({week, selectedDay}) => {
+export default ({week, selectedDay, onSelectDay}) => {
     return (
         <View style={styles.container}>
-            {week.map(day => {
+            {week.map((day, index) => {
                 return (
-                    <Text style={day === selectedDay ? {...styles.value, ...styles.selected} : styles.value}>
-                        {day > 0 ? day : ''}
-                    </Text>
+                    <TouchableHighlight
+                        key={index}
+                        onPress={() => onSelectDay(day)}>
+                        <Text
+                            style={day === selectedDay ? {...styles.value, ...styles.selected} : styles.value}
+                        >
+                            {day > 0 ? day : ''}
+                        </Text>
+                    </TouchableHighlight>
                 );
             })}
         </View>

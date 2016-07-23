@@ -11,7 +11,8 @@ export default class MonthPicker extends React.Component {
         state: PropTypes.object.isRequired,
 
         onPreviousMonth: PropTypes.func.isRequired,
-        onNextMonth: PropTypes.func.isRequired
+        onNextMonth: PropTypes.func.isRequired,
+        onSelectDay: PropTypes.func.isRequired
     };
 
     render() {
@@ -28,6 +29,7 @@ export default class MonthPicker extends React.Component {
                     year={this.props.state.year}
                     month={this.props.state.month}
                     selectedDay={this.props.state.day}
+                    onSelectDay={this.props.onSelectDay}
                 />
                 <CreateSubmit />
             </View>

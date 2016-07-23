@@ -2,13 +2,6 @@ import React, {PropTypes} from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 
 export default class CreateSubmit extends React.Component {
-    static propTypes = {
-        state: PropTypes.object.isRequired,
-
-        onPreviousMonth: PropTypes.func.isRequired,
-        onNextMonth: PropTypes.func.isRequired
-    };
-
     render() {
         return (
             <View style={styles.container}>

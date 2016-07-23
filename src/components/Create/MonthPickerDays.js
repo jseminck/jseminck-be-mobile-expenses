@@ -4,7 +4,7 @@ import getDaysForYearAndMonth from './util/getDaysForYearAndMonth';
 import MonthPickerDay from './MonthPickerDay';
 import MonthPickerWeek from './MonthPickerWeek';
 
-export default ({year, month, selectedDay}) => {
+export default ({year, month, selectedDay, onSelectDay}) => {
     const days = getDaysForYearAndMonth(year, month);
 
     return (
@@ -24,6 +24,7 @@ export default ({year, month, selectedDay}) => {
                         key={index}
                         week={week}
                         selectedDay={selectedDay}
+                        onSelectDay={onSelectDay}
                     />
                 );
             })}
