@@ -34,6 +34,8 @@ function onPreviousMonth(state) {
 }
 
 function onSelectDay(state, day) {
+    if (!day) return state;
+
     return {
         ...state,
         day
