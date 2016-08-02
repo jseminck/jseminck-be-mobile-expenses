@@ -51,9 +51,9 @@ const styles = {
         flex: 0.6
     },
     darkColor: {
-        backgroundColor: '#ECE5FB'
+        backgroundColor: '#fff'
     },
     lightColor: {
-        backgroundColor: '#DCD0F6'
+        backgroundColor: '#eee'
     }
 };

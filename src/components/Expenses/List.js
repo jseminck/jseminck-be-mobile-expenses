@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './expensesActions';
-import { View, Text, ListView } from 'react-native';
+import { View, ListView } from 'react-native';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import ListLoading from './ListLoading';
@@ -12,8 +12,7 @@ class List extends React.Component {
         login: React.PropTypes.object.isRequired,
         state: React.PropTypes.object.isRequired,
 
-        onLoad: React.PropTypes.func.isRequired,
-        onToggleServer: React.PropTypes.func.isRequired
+        onLoad: React.PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -56,8 +55,7 @@ class List extends React.Component {
                     renderHeader={::this.renderHeader}
                     renderRow={::this.renderRow}
                     enableEmptySections={true}
-                >
-                </ListView>
+                />
             </View>
         );
     }
