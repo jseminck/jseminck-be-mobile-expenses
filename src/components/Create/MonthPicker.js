@@ -48,6 +48,6 @@ export default class MonthPicker extends React.Component {
 
 const styles = {
     container: {
-        height: 340
+        height: 450
     }
 };

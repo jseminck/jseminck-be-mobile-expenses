@@ -1,14 +1,21 @@
 import React, {PropTypes} from 'react';
-import { View, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 
 import CreateHeader from './CreateHeader';
+import CategoryValue from './CategoryValue';
 import CreateSubmit from './CreateSubmit';
+
+const categories = [
+    'Clothes', 'Cosmetic', 'Eating Out', 'Education', 'Entertainment', 'Fashion', 'Gas', 'Groceries',
+    'Home', 'Internet', 'Loan', 'Medical', 'Pets', 'Presents', 'Rent', 'Sports', 'Study', 'Transport',
+    'Travel', 'Work Lunch'
+];
 
 export default class CategoryPicker extends React.Component {
     static propTypes = {
         state: PropTypes.object.isRequired,
 
-        // Completed
+        onSelectCategory: PropTypes.func.isRequired,
         onNextScreen: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired
     };
@@ -17,11 +24,18 @@ export default class CategoryPicker extends React.Component {
         return (
             <View>
                 <CreateHeader title="Category" />
-                <View style={styles.container}>
-                    <Text>
-                        Hello World
-                    </Text>
-                </View>
+                <ScrollView style={styles.container}>
+                    <View style={styles.center}>
+                        {categories.map(category => (
+                            <CategoryValue
+                                key={category}
+                                value={category}
+                                isSelected={category === this.props.state.category}
+                                onSelectCategory={this.props.onSelectCategory}
+                            />
+                        ))}
+                    </View>
+                </ScrollView>
                 <CreateSubmit
                     onNextScreen={this.props.onNextScreen}
                     onCancel={this.props.onCancel}
@@ -33,6 +47,10 @@ export default class CategoryPicker extends React.Component {
 
 const styles = {
     container: {
-        height: 340
+        height: 450,
+        flex: 1
+    },
+    center: {
+        alignItems: 'center'
     }
 };

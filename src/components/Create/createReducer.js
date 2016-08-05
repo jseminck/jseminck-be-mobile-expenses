@@ -2,7 +2,8 @@ const initialState = {
     currentScreen: 'MONTH',
     year: 2016,
     month: 8,
-    day: 27
+    day: 27,
+    category: 'Groceries'
 };
 
 const screenOrder = ['MONTH', 'CATEGORY', 'PRICE', 'COMPLETED'];
@@ -19,6 +20,8 @@ export default function createReducer(state = initialState, action) {
         return onPreviousMonth(state);
     case 'create.select.day':
         return onSelectDay(state, action.day);
+    case 'create.select.category':
+        return onSelectCategory(state, action.category)
     default:
         return state;
     }
@@ -63,5 +66,14 @@ function onSelectDay(state, day) {
     return {
         ...state,
         day
+    };
+}
+
+function onSelectCategory(state, category) {
+    if (!category) return state;
+
+    return {
+        ...state,
+        category
     };
 }

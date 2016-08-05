@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'React';
-import {View, TouchableHighlight, Text, Image} from 'react-native';
+import {View, TouchableHighlight, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default ({onPreviousMonth, onNextMonth, year, month}) => {
@@ -32,7 +32,7 @@ export default ({onPreviousMonth, onNextMonth, year, month}) => {
 
 const styles = {
     wrapper: {
-        backgroundColor: '#A38BD7',
+        backgroundColor: '#eee',
         marginTop: 40
     },
     container: {
@@ -55,6 +55,6 @@ const styles = {
         marginLeft: 20
     },
     previousButton: {
-        marginRight: 20,
+        marginRight: 20
     }
 };

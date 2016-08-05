@@ -18,6 +18,8 @@ class CreateContainer extends React.Component {
         onNextMonth: PropTypes.func.isRequired,
         onSelectDay: PropTypes.func.isRequired,
 
+        onSelectCategory: PropTypes.func.isRequired,
+
         // Completed
         onNextScreen: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired
@@ -52,7 +54,7 @@ class CreateContainer extends React.Component {
 const styles = {
     container: {
         height: 1000,
-        backgroundColor: '#ECE5FB'
+        backgroundColor: '#fff'
     }
 };
 

@@ -11,7 +11,7 @@ routes.getLoginRoute = () => ({
 
 routes.getHomeScreen = () => ({
     getSceneClass() {
-        return require('../components/Expenses/List').default;
+        return require('../components/Create/CreateContainer').default;
     },
     getTitle() {
         return 'Github';

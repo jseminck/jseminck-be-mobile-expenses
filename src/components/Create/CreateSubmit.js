@@ -33,7 +33,7 @@ export default class CreateSubmit extends React.Component {
 
 const styles = {
     container: {
-        marginTop: 100,
+        marginTop: 0,
         flex: 1,
         alignSelf: 'center',
         flexDirection: 'row'

@@ -36,7 +36,7 @@ const styles = {
     },
     selected: {
         width: 40,
-        backgroundColor: '#82D8B1',
-        color: '#fff'
+        backgroundColor: '#aaa',
+        color: 'white'
     }
 };

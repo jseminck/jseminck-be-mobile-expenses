@@ -17,3 +17,7 @@ export function onPreviousMonth() {
 export function onSelectDay(day) {
     return {type: 'create.select.day', day};
 }
+
+export function onSelectCategory(category) {
+    return {type: 'create.select.category', category};
+}

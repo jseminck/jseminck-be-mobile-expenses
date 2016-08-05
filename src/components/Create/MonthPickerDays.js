@@ -34,7 +34,7 @@ export default ({year, month, selectedDay, onSelectDay}) => {
 
 const styles = {
     wrapper: {
-        backgroundColor: '#DCD0F6'
+        backgroundColor: '#ddd'
     },
     container: {
         marginTop: 10,

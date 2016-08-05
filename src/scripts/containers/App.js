@@ -14,7 +14,7 @@ export default class App extends React.Component {
         return (
             <Provider store={configureStore()}>
                 <ExNavigator
-                    initialRoute={routes.getLoginRoute()}
+                    initialRoute={routes.getHomeScreen()}
                     style={{flex: 1}}
                     sceneStyle={{paddingTop: 64}}
                 />

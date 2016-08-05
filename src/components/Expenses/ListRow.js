@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 export default class ListRow extends React.Component {
     static propTypes = {
         item: React.PropTypes.object.isRequired,
-        index: React.PropTypes.number.isRequired
+        index: React.PropTypes.string.isRequired
     }
 
     render() {
