@@ -3,7 +3,8 @@ const initialState = {
     year: 2016,
     month: 8,
     day: 27,
-    category: 'Groceries'
+    category: 'Groceries',
+    price: '123.456'
 };
 
 const screenOrder = ['MONTH', 'CATEGORY', 'PRICE', 'COMPLETED'];
@@ -21,7 +22,9 @@ export default function createReducer(state = initialState, action) {
     case 'create.select.day':
         return onSelectDay(state, action.day);
     case 'create.select.category':
-        return onSelectCategory(state, action.category)
+        return onSelectCategory(state, action.category);
+    case 'create.remove.price':
+        return onRemovePrice(state);
     default:
         return state;
     }
@@ -75,5 +78,14 @@ function onSelectCategory(state, category) {
     return {
         ...state,
         category
+    };
+}
+
+function onRemovePrice(state) {
+    if (state.price.length === 0) return state;
+
+    return {
+        ...state,
+        price: state.price.slice(0, -1) // Remove last character
     };
 }

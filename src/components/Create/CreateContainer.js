@@ -20,6 +20,8 @@ class CreateContainer extends React.Component {
 
         onSelectCategory: PropTypes.func.isRequired,
 
+        onRemovePrice: PropTypes.func.isRequired,
+
         // Completed
         onNextScreen: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired
