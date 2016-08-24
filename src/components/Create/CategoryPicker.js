@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import CreateHeader from './CreateHeader';
 import CategoryValue from './CategoryValue';
