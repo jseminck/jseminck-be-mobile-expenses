@@ -4,9 +4,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default ({price, onRemovePrice}) => (
     <View style={styles.container}>
-        <Text style={styles.price}>
-            {price}
-        </Text>
+        <View style={styles.priceContainer}>
+          <Text style={styles.price}>
+              {price}
+          </Text>
+        </View>
         <TouchableHighlight underlayColor='#eee' onPress={() => onRemovePrice()}>
             <Icon name="long-arrow-left" style={styles.remove} />
         </TouchableHighlight>
@@ -23,6 +25,9 @@ const styles = {
         backgroundColor: '#eee',
         padding: 10,
         width: 300
+    },
+    priceContainer: {
+        height: 40
     },
     price: {
         fontSize: 32
