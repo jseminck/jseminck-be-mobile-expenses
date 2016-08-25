@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import { View, Text } from 'react-native';
 
-import CreateHeader from './CreateHeader';
-import CreateSubmit from './CreateSubmit';
+import CreateHeader from './../CreateHeader';
+import CreateSubmit from './../CreateSubmit';
 
 export default class Completed extends React.Component {
     static propTypes = {
@@ -18,11 +18,18 @@ export default class Completed extends React.Component {
             <View>
                 <CreateHeader title="Completed" />
                 <View style={styles.container}>
-                    <Text>
-                        Hello World
+                    <Text style={styles.value}>
+                        {this.props.state.year} - {this.props.state.month} - {this.props.state.day}
+                    </Text>
+                    <Text style={styles.value}>
+                        {this.props.state.category}
+                    </Text>
+                    <Text style={styles.value}>
+                        {this.props.state.price}
                     </Text>
                 </View>
                 <CreateSubmit
+                    submitText="Save"
                     onNextScreen={this.props.onNextScreen}
                     onCancel={this.props.onCancel}
                 />
@@ -33,6 +40,13 @@ export default class Completed extends React.Component {
 
 const styles = {
     container: {
-        height: 400
+        paddingTop: 50,
+        height: 400,
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'column'
+    },
+    value: {
+        margin: 20
     }
 };

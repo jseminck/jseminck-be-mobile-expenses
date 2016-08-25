@@ -3,6 +3,8 @@ import { View, Text, TouchableHighlight } from 'react-native';
 
 export default class CreateSubmit extends React.Component {
     static propTypes = {
+        submitText: PropTypes.string,
+
         onNextScreen: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired
     }
@@ -23,7 +25,7 @@ export default class CreateSubmit extends React.Component {
                     style={styles.submitButton}
                 >
                     <Text style={styles.submitButtonText}>
-                        Next
+                        {this.props.submitText || 'Next'}
                     </Text>
                 </TouchableHighlight>
             </View>
