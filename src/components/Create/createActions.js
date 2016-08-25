@@ -37,3 +37,7 @@ export function onSelectCategory(category) {
 export function onRemovePrice() {
     return {type: 'create.remove.price'};
 }
+
+export function onAddPrice(value) {
+    return {type: 'create.add.price', value};
+}

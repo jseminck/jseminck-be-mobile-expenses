@@ -2,12 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import Number from './Number';
 
-export default ({numbers}) => (
+export default ({numbers, onAddPrice}) => (
     <View style={styles.container}>
       {numbers.map(number => (
           <Number
               key={number}
               value={number}
+              onAddPrice={onAddPrice}
           />
       ))}
     </View>

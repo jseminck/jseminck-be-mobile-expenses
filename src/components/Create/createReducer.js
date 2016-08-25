@@ -25,6 +25,8 @@ export default function createReducer(state = initialState, action) {
         return onSelectCategory(state, action.category);
     case 'create.remove.price':
         return onRemovePrice(state);
+    case 'create.add.price':
+        return onAddPrice(state, action.value);
     default:
         return state;
     }
@@ -87,5 +89,12 @@ function onRemovePrice(state) {
     return {
         ...state,
         price: state.price.slice(0, -1) // Remove last character
+    };
+}
+
+function onAddPrice(state, value) {
+    return {
+        ...state,
+        price: state.price + value
     };
 }

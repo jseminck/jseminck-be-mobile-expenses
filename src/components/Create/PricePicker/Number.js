@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 
-export default ({value}) => (
-    <View style={Object.assign({}, styles.button, value === '0' ? styles.zeroButton : {})}>
-        <Text>
-            {value}
-        </Text>
-    </View>
+export default ({value, onAddPrice}) => (
+    <TouchableHighlight
+        underlayColor='#ddd'
+        onPress={() => onAddPrice(value)}
+    >
+        <View style={Object.assign({}, styles.button, value === '0' ? styles.zeroButton : {})}>
+            <Text>
+                {value}
+            </Text>
+        </View>
+    </TouchableHighlight>
 );
 
 const styles = {

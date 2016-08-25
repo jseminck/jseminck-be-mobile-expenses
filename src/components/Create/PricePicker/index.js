@@ -37,6 +37,7 @@ export default class PricePicker extends React.Component {
                             <NumbersRow
                                 key={index}
                                 numbers={numbersRow}
+                                onAddPrice={this.props.onAddPrice}
                             />
                         ))}
                     </View>
