@@ -70,6 +70,7 @@ class TabsScreen extends React.Component {
             >
                 <View style={styles.view}>
                     <CreateContainer
+                        onChangeTab={() => this.onChangeTab('Overview')}
                         navigator={this.props.navigator}
                     />
                 </View>

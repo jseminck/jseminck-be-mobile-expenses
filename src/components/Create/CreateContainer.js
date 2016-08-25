@@ -14,7 +14,6 @@ import Completed from './Completed';
 class CreateContainer extends React.Component {
     static propTypes = {
         state: PropTypes.object.isRequired,
-        navigator: PropTypes.object.isRequired,
 
         // MonthPicker
         onPreviousMonth: PropTypes.func.isRequired,
@@ -27,7 +26,8 @@ class CreateContainer extends React.Component {
 
         // Completed
         onNextScreen: PropTypes.func.isRequired,
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func.isRequired,
+        onChangeTab: PropTypes.func.isRequired
     };
 
     render() {
@@ -77,8 +77,7 @@ class CreateContainer extends React.Component {
 
     onCancel() {
         this.props.onCancel();
-        console.log("Replacing!");
-        this.props.navigator.replace(routes.getHomeScreen());
+        this.props.onChangeTab();
     }
 }
 
