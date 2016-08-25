@@ -69,6 +69,8 @@ class List extends React.Component {
     }
 
     renderRow(item, x, index) {
+        if (!item) return null;
+        
         return (
             <ListRow
                 index={index}
