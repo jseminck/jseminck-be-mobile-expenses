@@ -1,3 +1,5 @@
+import ExpensesService from './../../services/ExpensesService';
+
 /**
  * Screen selection
  */
@@ -40,4 +42,15 @@ export function onRemovePrice() {
 
 export function onAddPrice(value) {
     return {type: 'create.add.price', value};
+}
+
+/**
+ * Completed
+ */
+
+export function onCompleted(expense) {
+    return async (dispatch) => {
+        await ExpensesService.saveExpense(expense);
+        dispatch({type: 'create.complete'});
+    };
 }

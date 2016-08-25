@@ -51,13 +51,6 @@ function onLoginSuccess(token) {
     };
 }
 
-function onLoginFailed(errorMessage) {
-    return {
-        type: 'ON_LOGIN_FAILED',
-        errorMessage
-    };
-}
-
 export function onLogout() {
     return async (dispatch) => {
         try {

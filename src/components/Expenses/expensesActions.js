@@ -3,7 +3,8 @@ import ExpensesService from './../../services/ExpensesService';
 export function onLoad(token) {
     return async (dispatch) => {
         dispatch(onToggleLoading());
-        const expenses = await ExpensesService.getExpenses(token);
+        ExpensesService.setToken(token);
+        const expenses = await ExpensesService.getExpenses();
         dispatch(onLoadSuccess(expenses));
         dispatch(onToggleLoading());
     };

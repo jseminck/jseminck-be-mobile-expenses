@@ -9,28 +9,37 @@ export default class Completed extends React.Component {
         state: PropTypes.object.isRequired,
 
         // Completed
-        onNextScreen: PropTypes.func.isRequired,
+        onCompleted: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired
     };
 
     render() {
+        const {year, month, day, category, price} = this.props.state;
+
         return (
             <View>
                 <CreateHeader title="Completed" />
                 <View style={styles.container}>
                     <Text style={styles.value}>
-                        {this.props.state.year} - {this.props.state.month} - {this.props.state.day}
+                        {year} - {month} - {day}
                     </Text>
                     <Text style={styles.value}>
-                        {this.props.state.category}
+                        {category}
                     </Text>
                     <Text style={styles.value}>
-                        {this.props.state.price}
+                        {price}
                     </Text>
                 </View>
                 <CreateSubmit
                     submitText="Save"
-                    onNextScreen={this.props.onNextScreen}
+                    onNextScreen={() => {
+                        this.props.onCompleted({
+                            description: '',
+                            price,
+                            category,
+                            purchase_date: `${year}-${month}-${day} 00:00:00`
+                        });
+                    }}
                     onCancel={this.props.onCancel}
                 />
             </View>
