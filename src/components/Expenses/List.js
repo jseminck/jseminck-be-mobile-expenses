@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './expensesActions';
-import { View, ListView } from 'react-native';
+import { ScrollView, ListView } from 'react-native';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import ListLoading from './ListLoading';
@@ -49,14 +49,14 @@ class List extends React.Component {
         }
 
         return (
-            <View>
+            <ScrollView>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderHeader={::this.renderHeader}
                     renderRow={::this.renderRow}
                     enableEmptySections={true}
                 />
-            </View>
+            </ScrollView>
         );
     }
 
