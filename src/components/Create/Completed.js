@@ -33,6 +33,6 @@ export default class Completed extends React.Component {
 
 const styles = {
     container: {
-        height: 450
+        height: 400
     }
 };

@@ -48,7 +48,7 @@ export default class CategoryPicker extends React.Component {
 
 const styles = {
     container: {
-        height: 450,
+        height: 400,
         flex: 1
     },
     center: {
