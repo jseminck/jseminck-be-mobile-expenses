@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react';
 import { View, ScrollView } from 'react-native';
 
-import CreateHeader from './CreateHeader';
+import CreateHeader from './../CreateHeader';
+import CreateSubmit from './../CreateSubmit';
+
 import CategoryValue from './CategoryValue';
-import CreateSubmit from './CreateSubmit';
 
 const categories = [
     'Clothes', 'Cosmetic', 'Eating Out', 'Education', 'Entertainment', 'Fashion', 'Gas', 'Groceries',

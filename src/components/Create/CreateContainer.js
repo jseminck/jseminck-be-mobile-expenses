@@ -7,6 +7,7 @@ import * as actions from './createActions';
 import MonthPicker from './MonthPicker';
 import CategoryPicker from './CategoryPicker';
 import PricePicker from './PricePicker';
+
 import Completed from './Completed';
 
 class CreateContainer extends React.Component {

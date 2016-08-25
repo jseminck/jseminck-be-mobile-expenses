@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import getDaysForYearAndMonth from './util/getDaysForYearAndMonth';
+import getDaysForYearAndMonth from './../util/getDaysForYearAndMonth';
 import MonthPickerDay from './MonthPickerDay';
 import MonthPickerWeek from './MonthPickerWeek';
 

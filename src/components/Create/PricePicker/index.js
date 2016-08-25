@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { View, ScrollView } from 'react-native';
-import CreateHeader from './CreateHeader';
-import CreateSubmit from './CreateSubmit';
+import CreateHeader from './../CreateHeader';
+import CreateSubmit from './../CreateSubmit';
 import NumbersRow from './NumbersRow';
 import TotalPrice from './TotalPrice';
 
