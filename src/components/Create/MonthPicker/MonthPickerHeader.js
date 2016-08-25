@@ -8,10 +8,14 @@ export default ({onPreviousMonth, onNextMonth, year, month}) => {
         <View style={styles.wrapper}>
             <View style={styles.container}>
                 <TouchableHighlight
-                    underlayColor='#A38BD7'
+                    underlayColor='#eee'
                     onPress={onPreviousMonth}
                 >
-                    <Icon name="arrow-circle-left" size={30} style={styles.previousButton} />
+                    <Icon
+                        name="arrow-circle-left"
+                        size={30}
+                        style={styles.previousButton}
+                    />
                 </TouchableHighlight>
                 <Text style={styles.monthValue}>
                     {year}
@@ -20,10 +24,14 @@ export default ({onPreviousMonth, onNextMonth, year, month}) => {
                     {moment(`${year} ${month}`, 'YYYY MM').format('MMMM')}
                 </Text>
                 <TouchableHighlight
-                    underlayColor='#A38BD7'
+                    underlayColor='#eee'
                     onPress={onNextMonth}
                 >
-                    <Icon name="arrow-circle-right" size={30} style={styles.nextButton} />
+                    <Icon
+                        name="arrow-circle-right"
+                        size={30}
+                        style={styles.nextButton}
+                    />
                 </TouchableHighlight>
             </View>
         </View>
