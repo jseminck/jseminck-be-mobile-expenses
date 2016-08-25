@@ -1,8 +1,10 @@
+import moment from 'moment';
+
 const initialState = {
     currentScreen: 'MONTH',
-    year: 2016,
-    month: 8,
-    day: 27,
+    year: moment().year(),
+    month: moment().month() + 1, // 0-based
+    day: moment().date(),
     category: 'Groceries',
     price: ''
 };
