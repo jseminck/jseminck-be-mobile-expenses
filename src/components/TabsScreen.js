@@ -2,39 +2,24 @@ import React from 'react';
 import { View, TabBarIOS } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as githubActions from './Expenses/expensesActions';
+import * as expensesActions from './Expenses/expensesActions';
 import {onChangeTab} from './tabsActions';
 import {onLogout} from './Login/loginActions';
 import routes from './../scripts/routes';
 
-import ServerList from './Expenses/List';
+import List from './Expenses/List';
 import CreateContainer from './Create/CreateContainer';
 
 class TabsScreen extends React.Component {
     static propTypes = {
         tabs: React.PropTypes.object.isRequired,
-        state: React.PropTypes.object.isRequired,
         token: React.PropTypes.string,
         loggedIn: React.PropTypes.bool,
         navigator: React.PropTypes.object.isRequired,
 
         onChangeTab: React.PropTypes.func.isRequired,
-        onLogout: React.PropTypes.func.isRequired,
-        onDataLoad: React.PropTypes.func.isRequired,
-        onToggleServer: React.PropTypes.func.isRequired,
-        onTick: React.PropTypes.func.isRequired
+        onLogout: React.PropTypes.func.isRequired
     };
-
-    componentDidMount() {
-        if (this.props.loggedIn) {
-            this.props.onDataLoad(this.props.token);
-            // this.timer = setInterval(this.props.onTick, 1000);
-        }
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timer);
-    }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.loggedIn !== nextProps.loggedIn && !nextProps.loggedIn) {
@@ -44,7 +29,6 @@ class TabsScreen extends React.Component {
     }
 
     render() {
-        console.log("this.props.tabs", this.props.tabs);
         return (
             <TabBarIOS>
                 {this.renderListView()}
@@ -68,12 +52,8 @@ class TabsScreen extends React.Component {
                 onPress={this.onChangeTab.bind(this, 'Overview')}
             >
                 <View style={styles.view}>
-                    <ServerList
+                    <List
                         navigator={this.props.navigator}
-                        feed={this.props.state.feed}
-                        countdown={this.props.state.countdown}
-                        loading={this.props.state.loading}
-                        onToggleServer={this.props.onToggleServer}
                     />
                 </View>
             </TabBarIOS.Item>
@@ -115,14 +95,13 @@ const styles = {
 function mapStateToProps(state) {
     return {
         tabs: state.tabs,
-        state: state.aws,
         token: state.login.token,
         loggedIn: state.login.loggedIn
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Object.assign(githubActions, {onLogout, onChangeTab}), dispatch);
+    return bindActionCreators(Object.assign(expensesActions, {onLogout, onChangeTab}), dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TabsScreen);
