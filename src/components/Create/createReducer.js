@@ -4,7 +4,7 @@ const initialState = {
     month: 8,
     day: 27,
     category: 'Groceries',
-    price: '123.456'
+    price: ''
 };
 
 const screenOrder = ['MONTH', 'CATEGORY', 'PRICE', 'COMPLETED'];
@@ -45,8 +45,8 @@ function onNextScreen(state) {
     }
 }
 
-function onCancel(state) {
-    return state; // Not sure what to do yet.
+function onCancel() {
+    return initialState; // Not sure what to do yet.
 }
 
 function onNextMonth(state) {
