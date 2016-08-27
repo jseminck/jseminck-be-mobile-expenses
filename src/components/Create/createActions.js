@@ -1,3 +1,5 @@
+import {onLoad} from  './../Expenses/expensesActions';
+import AuthService from './../../services/AuthService';
 import ExpensesService from './../../services/ExpensesService';
 
 /**
@@ -52,6 +54,7 @@ export function onCompleted(expense) {
     return async (dispatch) => {
         dispatch(toggleLoading());
         await ExpensesService.saveExpense(expense);
+        dispatch(onLoad(AuthService.getToken()));
         dispatch({type: 'create.complete'});
     };
 }

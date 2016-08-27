@@ -1,16 +1,36 @@
 import {AsyncStorage} from 'react-native';
 import config from './../config';
 
-
 const BASE_URL = 'http://authentication.jseminck.be';
 const tokenKey = 'token';
 
 class AuthService {
+    constructor() {
+        this.token = undefined;
+    }
+
+    getToken() {
+        return this.token;
+    }
+
+    async setToken(token) {
+        this.token = token;
+
+        if (!token) {
+            await AsyncStorage.multiSet([
+                [tokenKey, token]
+            ]);
+        }
+        else {
+            await AsyncStorage.clear();
+        }
+    }
+
     /**
      *
      * @returns {Promise}
      */
-    getToken() {
+    getCachedToken() {
         return new Promise(async (resolve, reject) => {
             try {
                 const values = await AsyncStorage.multiGet([tokenKey]);
@@ -37,6 +57,7 @@ class AuthService {
                     throw 'Token is invalid, please re-login';
                 }
 
+                this.token = token;
                 return resolve(token);
             } catch (err) {
                 reject();
@@ -85,12 +106,9 @@ class AuthService {
                 }
 
                 const json = await response.json();
-                console.log("json", json);
                 const token = json.token;
 
-                await AsyncStorage.multiSet([
-                    [tokenKey, token]
-                ]);
+                await this.setToken(token);
 
                 resolve(token);
             } catch(err) {
@@ -108,7 +126,8 @@ class AuthService {
     logout() {
         return new Promise(async (resolve, reject) => {
             try {
-                await AsyncStorage.clear();
+                await this.setToken();
+
                 resolve();
             } catch(err) {
                 reject(err);

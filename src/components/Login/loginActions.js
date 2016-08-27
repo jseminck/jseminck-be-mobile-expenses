@@ -3,7 +3,7 @@ import AuthService from './../../services/AuthService';
 export function onStartupLogin() {
     return async (dispatch) => {
         try {
-            const token = await AuthService.getToken();
+            const token = await AuthService.getCachedToken();
             return dispatch(onLoginSuccess(token));
         } catch (err) {
             // return dispatch(onLoginFailed(err));
