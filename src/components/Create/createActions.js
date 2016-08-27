@@ -50,7 +50,12 @@ export function onAddPrice(value) {
 
 export function onCompleted(expense) {
     return async (dispatch) => {
+        dispatch(toggleLoading());
         await ExpensesService.saveExpense(expense);
         dispatch({type: 'create.complete'});
     };
+}
+
+function toggleLoading() {
+    return {type: 'create.toggle.loading'};
 }

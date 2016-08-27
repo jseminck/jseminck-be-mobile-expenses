@@ -6,7 +6,9 @@ const initialState = {
     month: moment().month() + 1, // 0-based
     day: moment().date(),
     category: 'Groceries',
-    price: ''
+    price: '',
+    loading: false,
+    completed: false
 };
 
 const screenOrder = ['MONTH', 'CATEGORY', 'PRICE', 'COMPLETED'];
@@ -29,22 +31,22 @@ export default function createReducer(state = initialState, action) {
         return onRemovePrice(state);
     case 'create.add.price':
         return onAddPrice(state, action.value);
+    case 'create.toggle.loading':
+        return onToggleLoading(state);
+    case 'create.complete':
+        return onComplete();
+
     default:
         return state;
     }
 }
 
 function onNextScreen(state) {
-    if (state.currentScreen === 'COMPLETED') {
-        // Not sure what to do yet.
-    }
-    else {
-        const currentScreenPosition = screenOrder.indexOf(state.currentScreen);
-        return {
-            ...state,
-            currentScreen: screenOrder[currentScreenPosition + 1]
-        };
-    }
+    const currentScreenPosition = screenOrder.indexOf(state.currentScreen);
+    return {
+        ...state,
+        currentScreen: screenOrder[currentScreenPosition + 1]
+    };
 }
 
 function onCancel() {
@@ -98,5 +100,18 @@ function onAddPrice(state, value) {
     return {
         ...state,
         price: state.price + value
+    };
+}
+
+function onToggleLoading(state) {
+    return {
+        ...state,
+        loading: !state.loading
+    };
+}
+
+function onComplete() {
+    return {
+        ...initialState
     };
 }

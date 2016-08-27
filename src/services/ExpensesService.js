@@ -23,7 +23,7 @@ class ExpensesService {
     saveExpense(expense) {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch(`${BASE_URL}?token=${this.token}`, {
+                await fetch(`${BASE_URL}?token=${this.token}`, {
                     method: 'POST',
                     body: JSON.stringify(expense),
                     headers: new Headers({
@@ -31,7 +31,6 @@ class ExpensesService {
                     })
                 });
 
-                await response.json();
                 resolve();
             } catch (err) {
                 reject(err);
