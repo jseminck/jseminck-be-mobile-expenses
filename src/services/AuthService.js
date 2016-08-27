@@ -16,7 +16,7 @@ class AuthService {
     async setToken(token) {
         this.token = token;
 
-        if (!token) {
+        if (token) {
             await AsyncStorage.multiSet([
                 [tokenKey, token]
             ]);
@@ -60,7 +60,7 @@ class AuthService {
                 this.token = token;
                 return resolve(token);
             } catch (err) {
-                reject();
+                reject(err);
             }
         });
     }
@@ -126,7 +126,7 @@ class AuthService {
     logout() {
         return new Promise(async (resolve, reject) => {
             try {
-                await this.setToken();
+                await this.setToken(undefined);
 
                 resolve();
             } catch(err) {

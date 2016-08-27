@@ -71,7 +71,7 @@ function onLogout(state) {
     return {
         ...state,
         loading: false,
-        token: {},
+        token: undefined,
         loggedIn: false
     };
 }
