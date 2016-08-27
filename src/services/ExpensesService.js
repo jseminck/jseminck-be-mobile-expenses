@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const BASE_URL = 'http://expenses.jseminck.be';
+const BASE_URL = 'http://expenses.jseminck.be/api/expenses';
 
 class ExpensesService {
     setToken(token) {
@@ -10,8 +10,7 @@ class ExpensesService {
     getExpenses() {
         return new Promise(async (resolve, reject) => {
             try {
-                console.log(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
-                const response = await fetch(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
+                const response = await fetch(`${BASE_URL}?year=2015&month=12&token=${this.token}`);
                 const json = await response.json();
 
                 resolve(_.orderBy(json, 'purchase_date', 'desc'));
@@ -28,8 +27,8 @@ class ExpensesService {
                     method: 'POST',
                     body: JSON.stringify(expense)
                 });
-                const json = await response.json();
-                console.log("json", json);
+
+                await response.json();
 
                 resolve();
             } catch (err) {

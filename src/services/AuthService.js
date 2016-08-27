@@ -30,7 +30,7 @@ class AuthService {
                 }
 
                 const token = data[tokenKey];
-                const verifyResponse = await fetch(`https://${BASE_URL}/api/login/verify?token=${token}`);
+                const verifyResponse = await fetch(`${BASE_URL}/api/login/verify?token=${token}`);
                 const verifyJson = await verifyResponse.json();
 
                 if (!verifyJson.success) {
@@ -65,7 +65,7 @@ class AuthService {
             }
 
             try {
-                const response = await fetch(`https://${BASE_URL}/api/login`, {
+                const response = await fetch(`${BASE_URL}/api/login`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -85,6 +85,7 @@ class AuthService {
                 }
 
                 const json = await response.json();
+                console.log("json", json);
                 const token = json.token;
 
                 await AsyncStorage.multiSet([
