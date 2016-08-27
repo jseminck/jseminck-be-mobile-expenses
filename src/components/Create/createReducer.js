@@ -31,6 +31,8 @@ export default function createReducer(state = initialState, action) {
         return onRemovePrice(state);
     case 'create.add.price':
         return onAddPrice(state, action.value);
+    case 'create.change.description':
+        return onChangeDescription(state, action.description);
     case 'create.toggle.loading':
         return onToggleLoading(state);
     case 'create.complete':
@@ -100,6 +102,13 @@ function onAddPrice(state, value) {
     return {
         ...state,
         price: state.price + value
+    };
+}
+
+function onChangeDescription(state, description) {
+    return {
+        ...state,
+        description
     };
 }
 

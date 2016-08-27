@@ -49,6 +49,9 @@ export function onAddPrice(value) {
 /**
  * Completed
  */
+export function onChangeDescription(description) {
+    return {type: 'create.change.description', description};
+}
 
 export function onCompleted(expense) {
     return async (dispatch) => {

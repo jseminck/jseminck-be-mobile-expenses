@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View, Text, ActivityIndicatorIOS } from 'react-native';
+import { View, Text, ActivityIndicatorIOS, TextInput } from 'react-native';
 
 import CreateHeader from './../CreateHeader';
 import CreateSubmit from './../CreateSubmit';
@@ -7,6 +7,8 @@ import CreateSubmit from './../CreateSubmit';
 export default class Completed extends React.Component {
     static propTypes = {
         state: PropTypes.object.isRequired,
+
+        onChangeDescription: PropTypes.string.isRequired,
 
         // Completed
         onCompleted: PropTypes.func.isRequired,
@@ -24,13 +26,18 @@ export default class Completed extends React.Component {
                         {year} - {month} - {day}
                     </Text>
                     <Text style={styles.value}>
-                        {category}
-                    </Text>
-                    <Text style={styles.value}>
-                        {price}
+                        {category} - {price}
                     </Text>
 
-                    {this.props.state.loading && this.renderLoadingButton()}
+                    <TextInput
+                        style={styles.textInput}
+                        editable={true}
+                        maxLength={120}
+                        value={this.props.state.description}
+                        onChangeText={(text) => this.onChangeDescription({text})}
+                    />
+
+                  {this.props.state.loading && this.renderLoadingButton()}
                 </View>
                 <CreateSubmit
                     submitText="Save"
@@ -68,6 +75,16 @@ const styles = {
         flexDirection: 'column'
     },
     value: {
-        margin: 20
+        margin: 5
+    },
+    textInput: {
+        marginLeft: 50,
+        marginRight: 50,
+        height: 120,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    activityIndicator: {
+        marginTop: 20
     }
 };
