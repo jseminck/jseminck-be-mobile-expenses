@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicatorIOS } from 'react-native';
 
 import CreateHeader from './../CreateHeader';
 import CreateSubmit from './../CreateSubmit';
@@ -29,6 +29,8 @@ export default class Completed extends React.Component {
                     <Text style={styles.value}>
                         {price}
                     </Text>
+
+                    {this.props.state.loading && this.renderLoadingButton()}
                 </View>
                 <CreateSubmit
                     submitText="Save"
@@ -43,6 +45,16 @@ export default class Completed extends React.Component {
                     onCancel={this.props.onCancel}
                 />
             </View>
+        );
+    }
+
+    renderLoadingButton() {
+        return (
+              <ActivityIndicatorIOS
+                  animating={this.props.state.loading}
+                  size='large'
+                  style={styles.activityIndicator}
+            />
         );
     }
 }
