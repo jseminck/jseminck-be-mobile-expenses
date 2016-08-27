@@ -35,7 +35,7 @@ export default class Completed extends React.Component {
                     onNextScreen={() => {
                         this.props.onCompleted({
                             description: '',
-                            price,
+                            price: Number(price),
                             category,
                             purchase_date: `${year}-${month}-${day} 00:00:00`
                         });

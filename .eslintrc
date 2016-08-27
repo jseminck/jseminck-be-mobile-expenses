@@ -8,7 +8,8 @@
     "react"
   ],
   "globals": {
-    "fetch": true
+    "fetch": true,
+    "Headers": true
   },
   "rules": {
     "indent": [2, 4],

@@ -10,7 +10,7 @@ class ExpensesService {
     getExpenses() {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch(`${BASE_URL}?year=2015&month=12&token=${this.token}`);
+                const response = await fetch(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
                 const json = await response.json();
 
                 resolve(_.orderBy(json, 'purchase_date', 'desc'));
@@ -25,11 +25,13 @@ class ExpensesService {
             try {
                 const response = await fetch(`${BASE_URL}?token=${this.token}`, {
                     method: 'POST',
-                    body: JSON.stringify(expense)
+                    body: JSON.stringify(expense),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
                 });
 
                 await response.json();
-
                 resolve();
             } catch (err) {
                 reject(err);
