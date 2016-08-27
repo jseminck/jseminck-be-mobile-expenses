@@ -1,6 +1,8 @@
 import {AsyncStorage} from 'react-native';
 import config from './../config';
 
+
+const BASE_URL = 'http://authentication.jseminck.be';
 const tokenKey = 'token';
 
 class AuthService {
@@ -28,7 +30,7 @@ class AuthService {
                 }
 
                 const token = data[tokenKey];
-                const verifyResponse = await fetch(`https://pacific-refuge-84094.herokuapp.com/api/login/verify?token=${token}`);
+                const verifyResponse = await fetch(`https://${BASE_URL}/api/login/verify?token=${token}`);
                 const verifyJson = await verifyResponse.json();
 
                 if (!verifyJson.success) {
@@ -63,7 +65,7 @@ class AuthService {
             }
 
             try {
-                const response = await fetch('https://pacific-refuge-84094.herokuapp.com/api/login', {
+                const response = await fetch(`https://${BASE_URL}/api/login`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

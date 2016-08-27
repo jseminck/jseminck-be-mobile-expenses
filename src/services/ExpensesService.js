@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const BASE_URL = 'http://calm-reef-93989.herokuapp.com/api/expenses';
+const BASE_URL = 'http://expenses.jseminck.be';
 
 class ExpensesService {
     setToken(token) {
@@ -10,6 +10,7 @@ class ExpensesService {
     getExpenses() {
         return new Promise(async (resolve, reject) => {
             try {
+                console.log(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
                 const response = await fetch(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
                 const json = await response.json();
 
@@ -28,6 +29,7 @@ class ExpensesService {
                     body: JSON.stringify(expense)
                 });
                 const json = await response.json();
+                console.log("json", json);
 
                 resolve();
             } catch (err) {

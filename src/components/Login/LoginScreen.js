@@ -77,12 +77,24 @@ class LoginScreen extends React.Component {
                         </View>
                     )}
                 </View>
+                {this.renderLoadingButton()}
+            </View>
+        );
+    }
+
+    renderLoadingButton() {
+        if (this.props.state.loading) {
+            return (
                 <ActivityIndicatorIOS
                     animating={this.props.state.loading}
                     size='large'
                     style={styles.activityIndicator}
                 />
-            </View>
+            );
+        }
+
+        return (
+            <View style={styles.emptyLoading} />
         );
     }
 }
@@ -117,8 +129,7 @@ const styles = {
         flex: 0.33
     },
     loginButton: {
-        flex: 0.8,
-        height: 100
+        flex: 0.8
     },
     errorMessage: {
         justifyContent: 'center',
@@ -131,5 +142,8 @@ const styles = {
     },
     activityIndicator: {
         marginTop: 15
+    },
+    emptyLoading: {
+        height: 50
     }
 };
