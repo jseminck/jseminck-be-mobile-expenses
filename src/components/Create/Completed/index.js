@@ -8,7 +8,7 @@ export default class Completed extends React.Component {
     static propTypes = {
         state: PropTypes.object.isRequired,
 
-        onChangeDescription: PropTypes.string.isRequired,
+        onChangeDescription: PropTypes.func.isRequired,
 
         // Completed
         onCompleted: PropTypes.func.isRequired,
@@ -34,7 +34,8 @@ export default class Completed extends React.Component {
                         editable={true}
                         maxLength={120}
                         value={this.props.state.description}
-                        onChangeText={(text) => this.onChangeDescription({text})}
+                        onChangeText={(text) => this.props.onChangeDescription(text)}
+                        placeholder='Expense description'
                     />
 
                   {this.props.state.loading && this.renderLoadingButton()}
@@ -43,7 +44,7 @@ export default class Completed extends React.Component {
                     submitText="Save"
                     onNextScreen={() => {
                         this.props.onCompleted({
-                            description: '',
+                            description: this.props.state.description,
                             price: Number(price),
                             category,
                             purchase_date: `${year}-${month}-${day} 00:00:00`
@@ -80,6 +81,7 @@ const styles = {
     textInput: {
         marginLeft: 50,
         marginRight: 50,
+        padding: 10,
         height: 120,
         borderColor: 'gray',
         borderWidth: 1

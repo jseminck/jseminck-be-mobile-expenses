@@ -20,6 +20,9 @@ export default class ListRow extends React.Component {
                 <View style={styles.category}>
                     <Text>{this.props.item.category}</Text>
                 </View>
+                <View style={styles.description}>
+                    <Text>{this.props.item.description}</Text>
+                </View>
             </View>
         );
     }
@@ -48,7 +51,10 @@ const styles = {
         flex: 0.2
     },
     category: {
-        flex: 0.6
+        flex: 0.2
+    },
+    description: {
+        flex: 0.4
     },
     darkColor: {
         backgroundColor: '#fff'

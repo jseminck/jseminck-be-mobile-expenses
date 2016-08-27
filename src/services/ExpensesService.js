@@ -10,6 +10,7 @@ class ExpensesService {
     getExpenses() {
         return new Promise(async (resolve, reject) => {
             try {
+                console.log(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
                 const response = await fetch(`${BASE_URL}?year=2016&month=8&token=${this.token}`);
                 const json = await response.json();
 
@@ -22,6 +23,7 @@ class ExpensesService {
 
     saveExpense(expense) {
         return new Promise(async (resolve, reject) => {
+            console.log(JSON.stringify(expense));
             try {
                 await fetch(`${BASE_URL}?token=${this.token}`, {
                     method: 'POST',

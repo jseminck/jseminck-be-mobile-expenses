@@ -7,6 +7,7 @@ const initialState = {
     day: moment().date(),
     category: 'Groceries',
     price: '',
+    description: '',
     loading: false,
     completed: false
 };
