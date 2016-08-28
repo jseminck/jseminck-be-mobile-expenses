@@ -25,7 +25,9 @@ export default class CategoryPicker extends React.Component {
         return (
             <View>
                 <CreateHeader title="Category" />
-                <ScrollView style={styles.container}>
+                <ScrollView
+                    style={styles.container}
+                >
                     <View style={styles.center}>
                         {categories.map(category => (
                             <CategoryValue
@@ -37,10 +39,12 @@ export default class CategoryPicker extends React.Component {
                         ))}
                     </View>
                 </ScrollView>
-                <CreateSubmit
-                    onNextScreen={this.props.onNextScreen}
-                    onCancel={this.props.onCancel}
-                />
+                <View style={styles.buttons}>
+                    <CreateSubmit
+                        onNextScreen={this.props.onNextScreen}
+                        onCancel={this.props.onCancel}
+                    />
+                </View>
             </View>
         );
     }
@@ -48,8 +52,12 @@ export default class CategoryPicker extends React.Component {
 
 const styles = {
     container: {
-        height: 400,
+        marginTop: 50,
+        height: 300,
         flex: 1
+    },
+    buttons: {
+        marginTop: 50
     },
     center: {
         alignItems: 'center'
