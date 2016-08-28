@@ -7,6 +7,7 @@ import {onChangeTab} from './tabsActions';
 import {onLogout} from './Login/loginActions';
 import routes from './../scripts/routes';
 
+import StatisticsPage from './Expenses/StatisticsPage';
 import List from './Expenses/List';
 import CreateContainer from './Create/CreateContainer';
 
@@ -31,6 +32,7 @@ class TabsScreen extends React.Component {
     render() {
         return (
             <TabBarIOS>
+                {this.renderStatisticsView()}
                 {this.renderListView()}
                 {this.renderCreateView()}
                 <TabBarIOS.Item
@@ -40,6 +42,23 @@ class TabsScreen extends React.Component {
                     onPress={::this.logout}
                 />
             </TabBarIOS>
+        );
+    }
+
+    renderStatisticsView() {
+        return (
+            <TabBarIOS.Item
+                title='Statistics'
+                selected={this.props.tabs.selected === 'Statistics'}
+                icon={require('./feed.png')}
+                onPress={this.onChangeTab.bind(this, 'Statistics')}
+            >
+                <View style={styles.view}>
+                    <StatisticsPage
+                        navigator={this.props.navigator}
+                    />
+                </View>
+            </TabBarIOS.Item>
         );
     }
 

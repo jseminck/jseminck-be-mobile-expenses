@@ -1,4 +1,4 @@
-export default function tabReducer(state = {selected: 'Overview'}, action) {
+export default function tabReducer(state = {selected: 'Statistics'}, action) {
     if (action.type === 'tabs.change') {
         return {
             selected: action.tab

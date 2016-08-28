@@ -1,5 +1,6 @@
 const initialState = {
-    loading: false
+    loading: false,
+    expenses: []
 };
 
 export default function github(state = initialState, action = {}) {
