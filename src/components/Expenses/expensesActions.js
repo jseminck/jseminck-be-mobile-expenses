@@ -36,8 +36,11 @@ export function onPreviousMonth() {
 }
 
 export function onDelete(id) {
-    return {
-        type: 'expenses.delete',
-        id
+    return async (dispatch) => {
+        await ExpensesService.deleteExpense(id);
+        dispatch({
+            type: 'expenses.delete',
+            id
+        });
     };
 }

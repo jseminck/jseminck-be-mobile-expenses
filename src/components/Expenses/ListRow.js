@@ -20,7 +20,7 @@ export default class ListRow extends React.Component {
         }];
 
         return (
-            <Swipeout right={swipeBtns}>
+            <Swipeout autoClose={true} right={swipeBtns}>
                 <View style={this.getBackgroundStyle()}>
                     <View style={styles.date}>
                         <Text>{moment(this.props.item.purchase_date).format('DD')}</Text>

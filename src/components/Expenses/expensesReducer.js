@@ -17,6 +17,8 @@ export default function github(state = initialState, action = {}) {
         return onNextMonth(state);
     case 'expenses.previous.month':
         return onPreviousMonth(state);
+    case 'expenses.delete':
+        return onDelete(state, action.id);
     default:
         return state;
     }
@@ -49,5 +51,12 @@ function onPreviousMonth(state) {
         ...state,
         year: state.month === 1 ? state.year - 1 : state.year,
         month: state.month === 1 ? 12 : state.month - 1
+    };
+}
+
+function onDelete(state, id) {
+    return {
+        ...state,
+        expenses: state.expenses.filter(expense => expense.id !== id)
     };
 }

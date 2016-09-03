@@ -37,6 +37,23 @@ class ExpensesService {
             }
         });
     }
+
+    deleteExpense(id) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await fetch(`${BASE_URL}?token=${this.token}/${id}`, {
+                    method: 'DELETE',
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
 }
 
 export default new ExpensesService();
