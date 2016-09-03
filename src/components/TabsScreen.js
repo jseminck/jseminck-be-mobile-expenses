@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TabBarIOS } from 'react-native';
+import { TabBarIOS } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as expensesActions from './Expenses/expensesActions';
@@ -9,7 +9,7 @@ import routes from './../scripts/routes';
 
 import StatisticsTab from './Tabs/StatisticsTab';
 import FeedTab from './Tabs/FeedTab';
-import CreateContainer from './Create/CreateContainer';
+import CreateTab from './Tabs/CreateTab';
 
 class TabsScreen extends React.Component {
     static propTypes = {
@@ -30,6 +30,7 @@ class TabsScreen extends React.Component {
     }
 
     render() {
+        console.log('CreateTab', CreateTab);
         return (
             <TabBarIOS>
                 <StatisticsTab
@@ -42,30 +43,17 @@ class TabsScreen extends React.Component {
                     navigator={this.props.navigator}
                     onChangeTab={this.onChangeTab.bind(this)}
                 />
-                {this.renderCreateView()}
+                <CreateTab
+                    selected={this.props.tabs.selected}
+                    navigator={this.props.navigator}
+                    onChangeTab={this.onChangeTab.bind(this)}
+                />
                 <TabBarIOS.Item
                     selected={false}
                     icon={require('./signout.png')}
                     onPress={::this.logout}
                 />
             </TabBarIOS>
-        );
-    }
-
-    renderCreateView() {
-        return (
-            <TabBarIOS.Item
-                selected={this.props.tabs.selected === 'Add'}
-                icon={require('./create.png')}
-                onPress={this.onChangeTab.bind(this, 'Add')}
-            >
-                <View style={styles.view}>
-                    <CreateContainer
-                        onChangeTab={() => this.onChangeTab('Overview')}
-                        navigator={this.props.navigator}
-                    />
-                </View>
-            </TabBarIOS.Item>
         );
     }
 
@@ -77,12 +65,6 @@ class TabsScreen extends React.Component {
         this.props.onChangeTab(tab);
     }
 }
-
-const styles = {
-    view: {
-        flex: 1
-    }
-};
 
 function mapStateToProps(state) {
     return {

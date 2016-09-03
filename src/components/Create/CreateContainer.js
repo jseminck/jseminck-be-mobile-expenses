@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './createActions';
-import routes from './../../scripts/routes';
 
 import MonthPicker from './MonthPicker';
 import CategoryPicker from './CategoryPicker';
