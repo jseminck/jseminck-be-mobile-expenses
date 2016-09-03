@@ -23,7 +23,7 @@ class FeedPage extends React.Component {
         });
 
         this.state = {
-            dataSource: dataSource.cloneWithRows(this.props.state)
+            dataSource: dataSource.cloneWithRows(this.props.state.expenses)
         };
     }
 
