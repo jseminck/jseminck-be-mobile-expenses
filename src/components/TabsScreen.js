@@ -38,6 +38,11 @@ class TabsScreen extends React.Component {
             let route = routes.getLoginRoute();
             this.props.navigator.replace(route);
         }
+
+        if (this.props.expenses.year !== nextProps.expenses.year ||
+          this.props.expenses.month !== nextProps.expenses.month) {
+            this.props.onLoad(this.props.login.token, nextProps.expenses.year, nextProps.expenses.month);
+        }
     }
 
     render() {
