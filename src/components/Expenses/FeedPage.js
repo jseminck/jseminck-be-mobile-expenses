@@ -1,12 +1,19 @@
 import React from 'react';
 import { ScrollView, ListView } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as expensesActions from './expensesActions';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import ListLoading from './ListLoading';
 
-export default class FeedPage extends React.Component {
+export class FeedPage extends React.Component {
     static propTypes = {
-        state: React.PropTypes.object.isRequired
+        state: React.PropTypes.object.isRequired,
+
+        onNextMonth: React.PropTypes.func.isRequired,
+        onPreviousMonth: React.PropTypes.func.isRequired,
+        onDelete: React.PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -51,7 +58,10 @@ export default class FeedPage extends React.Component {
     renderHeader() {
         return (
             <ListHeader
-                loading={this.props.state.loading}
+                year={this.props.state.year}
+                month={this.props.state.month}
+                onNextMonth={this.props.onNextMonth}
+                onPreviousMonth={this.props.onPreviousMonth}
             />
         );
     }
@@ -63,8 +73,14 @@ export default class FeedPage extends React.Component {
             <ListRow
                 index={index}
                 item={item}
+                onDelete={this.props.onDelete}
             />
         );
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(Object.assign(expensesActions), dispatch);
+}
+
+export default connect(undefined, mapDispatchToProps)(FeedPage);

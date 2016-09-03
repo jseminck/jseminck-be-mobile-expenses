@@ -34,3 +34,10 @@ export function onPreviousMonth() {
         type: 'expenses.previous.month'
     };
 }
+
+export function onDelete(id) {
+    return {
+        type: 'expenses.delete',
+        id
+    };
+}

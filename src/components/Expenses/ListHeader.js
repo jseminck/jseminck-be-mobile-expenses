@@ -1,11 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as expensesActions from './expensesActions';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export class ListHeader extends React.Component {
+export default class ListHeader extends React.Component {
     static propTypes = {
         year: React.PropTypes.number.isRequired,
         month: React.PropTypes.number.isRequired,
@@ -66,16 +63,3 @@ const styles = {
         marginRight: 10
     }
 };
-
-function mapStateToProps(state) {
-    return {
-        year: state.expenses.year,
-        month: state.expenses.month
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Object.assign(expensesActions), dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListHeader);
