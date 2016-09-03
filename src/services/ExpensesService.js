@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import moment from 'moment';
 
 const BASE_URL = 'http://expenses.jseminck.be/api/expenses';
 
@@ -8,13 +7,10 @@ class ExpensesService {
         this.token = token;
     }
 
-    getExpenses() {
+    getExpenses(year, month) {
         return new Promise(async (resolve, reject) => {
-            const currentYear = moment().year();
-            const currentMonth = moment().month() + 1; // 0-based
-
             try {
-                const response = await fetch(`${BASE_URL}?year=${currentYear}&month=${currentMonth}&token=${this.token}`);
+                const response = await fetch(`${BASE_URL}?year=${year}&month=${month}&token=${this.token}`);
                 const json = await response.json();
 
                 resolve(_.orderBy(json, 'purchase_date', 'desc'));

@@ -16,6 +16,7 @@ class TabsScreen extends React.Component {
     static propTypes = {
         tabs: React.PropTypes.object.isRequired,
         login: React.PropTypes.object.isRequired,
+        expenses: React.PropTypes.object.isRequired,
         token: React.PropTypes.string,
         loggedIn: React.PropTypes.bool,
         navigator: React.PropTypes.object.isRequired,
@@ -28,7 +29,7 @@ class TabsScreen extends React.Component {
 
     componentDidMount() {
         if (this.props.login.loggedIn) {
-            this.props.onLoad(this.props.login.token);
+            this.props.onLoad(this.props.login.token, this.props.expenses.year, this.props.expenses.month);
         }
     }
 
