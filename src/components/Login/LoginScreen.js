@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, ActivityIndicatorIOS, Text } from 'react-native';
+import { View, Image, ActivityIndicator, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as loginActions from './loginActions';
@@ -9,7 +9,7 @@ import routes from './../../scripts/routes';
 import LoginInput from './LoginInput';
 import LoginButton from './LoginButton';
 
-class LoginScreen extends React.Component {
+export class LoginScreen extends React.Component {
     static propTypes = {
         navigator: React.PropTypes.object.isRequired,
 
@@ -85,7 +85,7 @@ class LoginScreen extends React.Component {
     renderLoadingButton() {
         if (this.props.state.loading) {
             return (
-                <ActivityIndicatorIOS
+                <ActivityIndicator
                     animating={this.props.state.loading}
                     size='large'
                     style={styles.activityIndicator}

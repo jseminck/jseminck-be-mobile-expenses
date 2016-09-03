@@ -9,7 +9,9 @@
   ],
   "globals": {
     "fetch": true,
-    "Headers": true
+    "Headers": true,
+    "it": true,
+    "expect": true
   },
   "rules": {
     "indent": [2, 4],

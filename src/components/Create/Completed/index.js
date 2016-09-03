@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View, Text, ActivityIndicatorIOS, TextInput } from 'react-native';
+import { View, Text, ActivityIndicator, TextInput } from 'react-native';
 
 import CreateHeader from './../CreateHeader';
 import CreateSubmit from './../CreateSubmit';
@@ -58,7 +58,7 @@ export default class Completed extends React.Component {
 
     renderLoadingButton() {
         return (
-              <ActivityIndicatorIOS
+              <ActivityIndicator
                   animating={this.props.state.loading}
                   size='large'
                   style={styles.activityIndicator}

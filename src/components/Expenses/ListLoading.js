@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, ActivityIndicatorIOS } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 
 export default () => (
     <View style={styles.container}>
-        <ActivityIndicatorIOS
+        <ActivityIndicator
             animating={true}
             size='large'
         />
