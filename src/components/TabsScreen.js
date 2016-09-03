@@ -15,13 +15,22 @@ import LogoutTab from './Tabs/LogoutTab';
 class TabsScreen extends React.Component {
     static propTypes = {
         tabs: React.PropTypes.object.isRequired,
+        login: React.PropTypes.object.isRequired,
         token: React.PropTypes.string,
         loggedIn: React.PropTypes.bool,
         navigator: React.PropTypes.object.isRequired,
 
+        onLoad: React.PropTypes.func.isRequired,
+
         onChangeTab: React.PropTypes.func.isRequired,
         onLogout: React.PropTypes.func.isRequired
     };
+
+    componentDidMount() {
+        if (this.props.login.loggedIn) {
+            this.props.onLoad(this.props.login.token);
+        }
+    }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.loggedIn !== nextProps.loggedIn && !nextProps.loggedIn) {
@@ -36,11 +45,13 @@ class TabsScreen extends React.Component {
                 <StatisticsTab
                     selected={this.props.tabs.selected}
                     navigator={this.props.navigator}
+                    expenses={this.props.expenses}
                     onChangeTab={this.props.onChangeTab}
                 />
                 <FeedTab
                     selected={this.props.tabs.selected}
                     navigator={this.props.navigator}
+                    expenses={this.props.expenses}
                     onChangeTab={this.props.onChangeTab}
                 />
                 <CreateTab
@@ -59,6 +70,8 @@ class TabsScreen extends React.Component {
 function mapStateToProps(state) {
     return {
         tabs: state.tabs,
+        login: state.login,
+        expenses: state.expenses,
         token: state.login.token,
         loggedIn: state.login.loggedIn
     };

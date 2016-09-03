@@ -1,18 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from './expensesActions';
 import { ScrollView, ListView } from 'react-native';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import ListLoading from './ListLoading';
 
-class FeedPage extends React.Component {
+export default class FeedPage extends React.Component {
     static propTypes = {
-        login: React.PropTypes.object.isRequired,
-        state: React.PropTypes.object.isRequired,
-
-        onLoad: React.PropTypes.func.isRequired
+        state: React.PropTypes.object.isRequired
     }
 
     constructor(props) {
@@ -25,12 +19,6 @@ class FeedPage extends React.Component {
         this.state = {
             dataSource: dataSource.cloneWithRows(this.props.state.expenses)
         };
-    }
-
-    componentDidMount() {
-        if (this.props.login.loggedIn) {
-            this.props.onLoad(this.props.login.token);
-        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -79,17 +67,4 @@ class FeedPage extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        login: state.login,
-        state: state.expenses
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
 
