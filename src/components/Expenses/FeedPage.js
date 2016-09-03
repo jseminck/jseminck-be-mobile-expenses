@@ -7,7 +7,7 @@ import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import ListLoading from './ListLoading';
 
-class List extends React.Component {
+class FeedPage extends React.Component {
     static propTypes = {
         login: React.PropTypes.object.isRequired,
         state: React.PropTypes.object.isRequired,
@@ -91,5 +91,5 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
 
