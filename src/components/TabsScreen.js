@@ -36,7 +36,6 @@ class TabsScreen extends React.Component {
                 {this.renderListView()}
                 {this.renderCreateView()}
                 <TabBarIOS.Item
-                    title='Log out'
                     selected={false}
                     icon={require('./signout.png')}
                     onPress={::this.logout}
@@ -48,9 +47,8 @@ class TabsScreen extends React.Component {
     renderStatisticsView() {
         return (
             <TabBarIOS.Item
-                title='Statistics'
                 selected={this.props.tabs.selected === 'Statistics'}
-                icon={require('./feed.png')}
+                icon={require('./statistics.png')}
                 onPress={this.onChangeTab.bind(this, 'Statistics')}
             >
                 <View style={styles.view}>
@@ -65,7 +63,6 @@ class TabsScreen extends React.Component {
     renderListView() {
         return (
             <TabBarIOS.Item
-                title='Overview'
                 selected={this.props.tabs.selected === 'Overview'}
                 icon={require('./feed.png')}
                 onPress={this.onChangeTab.bind(this, 'Overview')}
@@ -82,7 +79,6 @@ class TabsScreen extends React.Component {
     renderCreateView() {
         return (
             <TabBarIOS.Item
-                title='Add'
                 selected={this.props.tabs.selected === 'Add'}
                 icon={require('./create.png')}
                 onPress={this.onChangeTab.bind(this, 'Add')}
@@ -109,6 +105,10 @@ class TabsScreen extends React.Component {
 const styles = {
     view: {
         flex: 1
+    },
+    tabBarItem: {
+        width: 90,
+        height: 90
     }
 };
 
