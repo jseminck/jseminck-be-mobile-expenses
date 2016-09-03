@@ -54,10 +54,15 @@ export function onChangeDescription(description) {
 }
 
 export function onCompleted(expense) {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         dispatch(toggleLoading());
         await ExpensesService.saveExpense(expense);
-        dispatch(onLoad(AuthService.getToken()));
+
+        const {year, month} = getState().expenses;
+        console.log('year', year, month);
+
+        dispatch(onLoad(AuthService.getToken(), year, month));
+
         dispatch({type: 'create.complete'});
     };
 }
