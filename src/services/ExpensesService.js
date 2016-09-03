@@ -41,12 +41,14 @@ class ExpensesService {
     deleteExpense(id) {
         return new Promise(async (resolve, reject) => {
             try {
-                await fetch(`${BASE_URL}?token=${this.token}/${id}`, {
+                const response = await fetch(`${BASE_URL}/${id}?token=${this.token}`, {
                     method: 'DELETE',
                     headers: new Headers({
                         'Content-Type': 'application/json'
                     })
                 });
+
+                console.log('response', response);
 
                 resolve();
             } catch (err) {
