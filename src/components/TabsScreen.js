@@ -10,6 +10,7 @@ import routes from './../scripts/routes';
 import StatisticsTab from './Tabs/StatisticsTab';
 import FeedTab from './Tabs/FeedTab';
 import CreateTab from './Tabs/CreateTab';
+import LogoutTab from './Tabs/LogoutTab';
 
 class TabsScreen extends React.Component {
     static propTypes = {
@@ -30,39 +31,28 @@ class TabsScreen extends React.Component {
     }
 
     render() {
-        console.log('CreateTab', CreateTab);
         return (
             <TabBarIOS>
                 <StatisticsTab
                     selected={this.props.tabs.selected}
                     navigator={this.props.navigator}
-                    onChangeTab={this.onChangeTab.bind(this)}
+                    onChangeTab={this.props.onChangeTab}
                 />
                 <FeedTab
                     selected={this.props.tabs.selected}
                     navigator={this.props.navigator}
-                    onChangeTab={this.onChangeTab.bind(this)}
+                    onChangeTab={this.props.onChangeTab}
                 />
                 <CreateTab
                     selected={this.props.tabs.selected}
                     navigator={this.props.navigator}
-                    onChangeTab={this.onChangeTab.bind(this)}
+                    onChangeTab={this.props.onChangeTab}
                 />
-                <TabBarIOS.Item
-                    selected={false}
-                    icon={require('./signout.png')}
-                    onPress={::this.logout}
+                <LogoutTab
+                    onLogout={this.props.onLogout}
                 />
             </TabBarIOS>
         );
-    }
-
-    logout() {
-        this.props.onLogout();
-    }
-
-    onChangeTab(tab) {
-        this.props.onChangeTab(tab);
     }
 }
 
