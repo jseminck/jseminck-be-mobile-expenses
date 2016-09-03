@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import Dimensions from 'Dimensions';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -41,7 +41,7 @@ export default class LoginInput extends React.Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     input: {
         flexDirection: 'row',
         marginTop: 30,
@@ -63,4 +63,4 @@ const styles = {
         height: 30,
         color: 'black'
     }
-};
+});

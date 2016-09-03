@@ -59,8 +59,6 @@ export function onCompleted(expense) {
         await ExpensesService.saveExpense(expense);
 
         const {year, month} = getState().expenses;
-        console.log('year', year, month);
-
         dispatch(onLoad(AuthService.getToken(), year, month));
 
         dispatch({type: 'create.complete'});
