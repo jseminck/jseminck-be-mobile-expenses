@@ -42,10 +42,12 @@ export default class PricePicker extends React.Component {
                         ))}
                     </View>
                 </ScrollView>
-                <CreateSubmit
-                    onNextScreen={this.props.onNextScreen}
-                    onCancel={this.props.onCancel}
-                />
+                <View>
+                    <CreateSubmit
+                        onNextScreen={this.props.onNextScreen}
+                        onCancel={this.props.onCancel}
+                    />
+                </View>
             </View>
         );
     }
@@ -53,8 +55,7 @@ export default class PricePicker extends React.Component {
 
 const styles = {
     container: {
-        height: 400,
-        flex: 1
+        height: 400
     },
     center: {
         alignItems: 'center'

@@ -53,8 +53,7 @@ export default class CategoryPicker extends React.Component {
 const styles = {
     container: {
         marginTop: 50,
-        height: 300,
-        flex: 1
+        height: 300
     },
     buttons: {
         marginTop: 50

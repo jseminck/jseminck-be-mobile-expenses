@@ -40,18 +40,20 @@ export default class Completed extends React.Component {
 
                   {this.props.state.loading && this.renderLoadingButton()}
                 </View>
-                <CreateSubmit
-                    submitText="Save"
-                    onNextScreen={() => {
-                        this.props.onCompleted({
-                            description: this.props.state.description,
-                            price: Number(price),
-                            category,
-                            purchase_date: `${year}-${month}-${day} 00:00:00`
-                        });
-                    }}
-                    onCancel={this.props.onCancel}
-                />
+                <View>
+                    <CreateSubmit
+                        submitText="Save"
+                        onNextScreen={() => {
+                            this.props.onCompleted({
+                                description: this.props.state.description,
+                                price: Number(price),
+                                category,
+                                purchase_date: `${year}-${month}-${day} 00:00:00`
+                            });
+                        }}
+                        onCancel={this.props.onCancel}
+                    />
+                </View>
             </View>
         );
     }
