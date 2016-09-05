@@ -39,6 +39,15 @@ export default class Completed extends React.Component {
                     />
 
                   {this.props.state.loading && this.renderLoadingButton()}
+
+                  {this.props.state.error && (
+                          <View style={styles.errorContainer}>
+                              <Text style={styles.errorText}>
+                                  An error has occured
+                              </Text>
+                          </View>
+                      )
+                  }
                 </View>
                 <View>
                     <CreateSubmit
@@ -85,11 +94,22 @@ const styles = {
         marginLeft: 50,
         marginRight: 50,
         padding: 10,
-        height: 20,
+        height: 50,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        borderRadius: 5
     },
     activityIndicator: {
         marginTop: 20
+    },
+    errorContainer: {
+        marginTop: 30,
+        backgroundColor: 'salmon',
+        padding: 20,
+        borderRadius: 5
+    },
+    errorText: {
+        color: 'white',
+        fontWeight: 'bold'
     }
 };

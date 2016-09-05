@@ -23,13 +23,17 @@ class ExpensesService {
     saveExpense(expense) {
         return new Promise(async (resolve, reject) => {
             try {
-                await fetch(`${BASE_URL}?token=${this.token}`, {
+                const response = await fetch(`${BASE_URL}balabla?token=${this.token}`, {
                     method: 'POST',
                     body: JSON.stringify(expense),
                     headers: new Headers({
                         'Content-Type': 'application/json'
                     })
                 });
+
+                if (response.status < 200 || response.status >= 300) {
+                    throw 'Save failed';
+                }
 
                 resolve();
             } catch (err) {
@@ -41,14 +45,12 @@ class ExpensesService {
     deleteExpense(id) {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await fetch(`${BASE_URL}/${id}?token=${this.token}`, {
+                await fetch(`${BASE_URL}/${id}?token=${this.token}`, {
                     method: 'DELETE',
                     headers: new Headers({
                         'Content-Type': 'application/json'
                     })
                 });
-
-                console.log('response', response);
 
                 resolve();
             } catch (err) {

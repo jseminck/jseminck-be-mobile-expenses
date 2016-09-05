@@ -9,6 +9,7 @@ const initialState = {
     price: '',
     description: '',
     loading: false,
+    error: false,
     completed: false
 };
 
@@ -38,6 +39,8 @@ export default function createReducer(state = initialState, action) {
         return onToggleLoading(state);
     case 'create.complete':
         return onComplete();
+    case 'create.complete.error':
+        return onCompleteError(state);
 
     default:
         return state;
@@ -122,6 +125,15 @@ function onToggleLoading(state) {
 
 function onComplete() {
     return {
-        ...initialState
+        ...initialState,
+        error: false
+    };
+}
+
+function onCompleteError(state) {
+    return {
+        ...state,
+        loading: false,
+        error: true
     };
 }
