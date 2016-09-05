@@ -1,4 +1,4 @@
-exports[`test renders correctly 1`] = `
+exports[`test renders correctly with password 1`] = `
 <View
   style={
     Object {
@@ -38,9 +38,64 @@ exports[`test renders correctly 1`] = `
   </Text>
   <TextInput
     autoCapitalize="none"
-    onChangeText={undefined}
+    onChangeText={[Function onChangeText]}
+    password={true}
+    placeholder="myPlaceholder"
+    placeholderTextColor="black"
+    style={
+      Object {
+        "color": "black",
+        "flex": 0.85,
+        "height": 30,
+        "paddingTop": 3
+      }
+    } />
+</View>
+`;
+
+exports[`test renders correctly without password 1`] = `
+<View
+  style={
+    Object {
+      "borderBottomColor": "#CCC",
+      "borderColor": "transparent",
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "marginTop": 30,
+      "width": 375
+    }
+  }>
+  <Text
+    accessible={true}
+    allowFontScaling={false}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontFamily": "FontAwesome",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "normal"
+        },
+        Array [
+          Object {
+            "color": "black",
+            "flex": 0.15,
+            "fontSize": 30,
+            "marginLeft": 50,
+            "opacity": 0.8
+          }
+        ]
+      ]
+    }>
+    
+  </Text>
+  <TextInput
+    autoCapitalize="none"
+    onChangeText={[Function onChangeText]}
     password={undefined}
-    placeholder={undefined}
+    placeholder="myPlaceholder"
     placeholderTextColor="black"
     style={
       Object {
