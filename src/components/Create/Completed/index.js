@@ -81,10 +81,11 @@ const styles = {
         margin: 5
     },
     textInput: {
+        marginTop: 20,
         marginLeft: 50,
         marginRight: 50,
         padding: 10,
-        height: 120,
+        height: 20,
         borderColor: 'gray',
         borderWidth: 1
     },
